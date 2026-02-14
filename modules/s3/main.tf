@@ -5,7 +5,7 @@ resource "random_string" "suffix" {
 }
 
 resource "aws_s3_bucket" "tfstate_bucket" {
-  bucket = "tfstate-${var.env}-${var.region}-${random_string.suffix.result}"
+  bucket = "${var.s3_bucket_name}-${random_string.suffix.result}"
   lifecycle {
     prevent_destroy = false
   }
