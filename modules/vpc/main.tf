@@ -13,6 +13,7 @@ resource "aws_vpc" "vpc" {
   )
 }
 
+
 # create internet gateway and attach it to vpc
 resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = aws_vpc.vpc.id
@@ -26,8 +27,6 @@ resource "aws_internet_gateway" "internet_gateway" {
   depends_on = [aws_vpc.vpc]
 }
 
-# use data source to get all avalablility zones in region
-# data "aws_availability_zones" "available_zones" {}
 
 # create public subnet
 resource "aws_subnet" "public" {
@@ -44,8 +43,10 @@ resource "aws_subnet" "public" {
       Name = "${local.resource_name}-public-subnet-${local.azs[count.index]}"
     }
   )
+
   depends_on = [aws_vpc.vpc]
 }
+
 
 # create private subnet
 resource "aws_subnet" "private" {
@@ -62,7 +63,10 @@ resource "aws_subnet" "private" {
       Name = "${local.resource_name}-private-subnet-${local.azs[count.index]}"
     }
   )
+
+  depends_on = [aws_vpc.vpc]
 }
+
 
 # create database subnet
 resource "aws_subnet" "database" {
@@ -79,7 +83,10 @@ resource "aws_subnet" "database" {
       Name = "${local.resource_name}-database-subnet-${local.azs[count.index]}"
     }
   )
+
+  depends_on = [aws_vpc.vpc]
 }
+
 
 # create public route table 
 resource "aws_route_table" "public" {
@@ -91,8 +98,10 @@ resource "aws_route_table" "public" {
       Name = "${local.resource_name}-public-RT"
     }
   )
+
   depends_on = [aws_subnet.public]
 }
+
 
 # create private route table 
 resource "aws_route_table" "private" {
@@ -104,8 +113,10 @@ resource "aws_route_table" "private" {
       Name = "${local.resource_name}-private-RT"
     }
   )
-  # depends_on = [aws_subnet.private]
+
+  depends_on = [aws_subnet.private]
 }
+
 
 # create database route table 
 resource "aws_route_table" "database" {
@@ -117,8 +128,10 @@ resource "aws_route_table" "database" {
       Name = "${local.resource_name}-database-RT"
     }
   )
-  # depends_on = [aws_subnet.database]
+
+  depends_on = [aws_subnet.database]
 }
+
 
 # always add route seperately
 resource "aws_route" "public" {
@@ -128,6 +141,7 @@ resource "aws_route" "public" {
 
    depends_on = [aws_route_table.public]
 }
+
 
 # associate public route table to public subnet
 resource "aws_route_table_association" "public" {
