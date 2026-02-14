@@ -1,11 +1,11 @@
-variable "environment_name" {
+variable "env" {
   description = "Deployment environment (e.g., dev, staging, prod)"
   type        = string
   default     = "dev"
 }
 
-variable "aws_region" {
+variable "region" {
   description = "AWS region to deploy backend (e.g., us-west-2)"
   type        = string
-  default     = "us-east-1"
+  default     = "ap-south-1"
 }
