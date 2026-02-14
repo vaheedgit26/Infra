@@ -5,15 +5,16 @@ resource "random_string" "suffix" {
 }
 
 resource "aws_s3_bucket" "tfstate_bucket" {
-  bucket = "tfstate-${var.environment_name}-${var.aws_region}-${random_string.suffix.result}"
+  bucket = "tfstate-${var.env}-${var.region}-${random_string.suffix.result}"
   lifecycle {
     prevent_destroy = false
   }
   tags = {
-    Name        = "tfstate-${var.environment_name}-${var.aws_region}"
-    Environment = var.environment_name
-    Project     = "remote-backend-for-devops-real-world-course"
+    Name        = "tfstate-${var.env}-${var.region}"
+    Environment = var.env
+    Project     = "remote-backend"
     Purpose     = "terraform-backend"
+    Terraform   = "true"
   }
 }
 
