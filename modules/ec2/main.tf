@@ -43,7 +43,7 @@ resource "aws_instance" "ec2_instance" {
 # Create and attach EIP (Elastic IP) for NAT INSTANCE
 resource "aws_eip" "nat_instance_eip" {
 # count = var.is_nat_instance ? 1 : 0
-  count = (var.is_nat_instance && var.is_eip_required) ? 1 : 0
+  count = ((var.is_nat_instance) && (var.is_eip_required)) ? 1 : 0
 
   domain   = "vpc"
   instance = aws_instance.ec2_instance.id
