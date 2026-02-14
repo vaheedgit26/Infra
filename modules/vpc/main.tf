@@ -43,7 +43,6 @@ resource "aws_subnet" "public" {
       Name = "${local.resource_name}-public-subnet-${local.azs[count.index]}"
     }
   )
-
   depends_on = [aws_vpc.vpc]
 }
 
@@ -63,7 +62,6 @@ resource "aws_subnet" "private" {
       Name = "${local.resource_name}-private-subnet-${local.azs[count.index]}"
     }
   )
-
   depends_on = [aws_vpc.vpc]
 }
 
@@ -83,7 +81,6 @@ resource "aws_subnet" "database" {
       Name = "${local.resource_name}-database-subnet-${local.azs[count.index]}"
     }
   )
-
   depends_on = [aws_vpc.vpc]
 }
 
@@ -98,7 +95,6 @@ resource "aws_route_table" "public" {
       Name = "${local.resource_name}-public-RT"
     }
   )
-
   depends_on = [aws_subnet.public]
 }
 
@@ -113,7 +109,6 @@ resource "aws_route_table" "private" {
       Name = "${local.resource_name}-private-RT"
     }
   )
-
   depends_on = [aws_subnet.private]
 }
 
@@ -128,7 +123,6 @@ resource "aws_route_table" "database" {
       Name = "${local.resource_name}-database-RT"
     }
   )
-
   depends_on = [aws_subnet.database]
 }
 
@@ -139,7 +133,7 @@ resource "aws_route" "public" {
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.internet_gateway.id
 
-   depends_on = [aws_route_table.public]
+  depends_on = [aws_route_table.public]
 }
 
 
