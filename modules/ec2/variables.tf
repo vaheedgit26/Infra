@@ -17,7 +17,7 @@ variable "ec2_tags" { default = {} }
 variable "iam_instance_profile" { default = null }
 variable "user_data" { default = null }
 variable "what_type_instance" { default = null }
-variable "eip_required" { default = false }
+variable "is_eip_required" { default = false }
 
 variable "is_nat_instance" {
   type = bool
