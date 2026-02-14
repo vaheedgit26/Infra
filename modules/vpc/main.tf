@@ -30,7 +30,7 @@ resource "aws_internet_gateway" "internet_gateway" {
 
 # create public subnet
 resource "aws_subnet" "public" {
-  count = length(var.public_subnet_cidr)
+  count = length(var.public_subnet_cidr) > 0 ? length(var.public_subnet_cidr) : 0
   
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.public_subnet_cidr[count.index]
@@ -49,7 +49,7 @@ resource "aws_subnet" "public" {
 
 # create private subnet
 resource "aws_subnet" "private" {
-  count = length(var.private_subnet_cidr)
+  count = length(var.private_subnet_cidr) > 0 ? length(var.private_subnet_cidr) : 0
   
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.private_subnet_cidr[count.index]
@@ -68,7 +68,7 @@ resource "aws_subnet" "private" {
 
 # create database subnet
 resource "aws_subnet" "database" {
-  count = length(var.database_subnet_cidr)
+  count = length(var.database_subnet_cidr) > 0 ? length(var.database_subnet_cidr) : 0
   
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.database_subnet_cidr[count.index]
