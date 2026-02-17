@@ -1,6 +1,6 @@
 variable "s3_bucket_name" {}
 variable "project_name" {}
-#variable "env" {}
+variable "env" {}
 variable "region" {}
 
 #variable "env" {
