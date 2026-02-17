@@ -26,7 +26,7 @@ resource "aws_s3_bucket_versioning" "bucket_versioning" {
   }
 }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "tfstate_encryption" {
+resource "aws_s3_bucket_server_side_encryption_configuration" "bucket_encryption" {
   bucket = aws_s3_bucket.bucket.id
   rule {
     apply_server_side_encryption_by_default {
@@ -35,7 +35,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "tfstate_encryptio
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "bucket_block_public" {
+resource "aws_s3_bucket_public_access_block" "bucket_public_access_block" {
   bucket = aws_s3_bucket.bucket.id
   block_public_acls       = true
   block_public_policy     = true
