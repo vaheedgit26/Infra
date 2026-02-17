@@ -10,8 +10,8 @@ resource "aws_s3_bucket" "tfstate_bucket" {
     prevent_destroy = false
   }
   tags = {
-    Name        = "tfstate-${var.project_name}-${var.region}"
-    #Environment = var.env
+    Name        = "tfstate-${var.project_name}-${var.env}-${var.region}"
+    Environment = var.env
     Project     = "remote-backend"
     Purpose     = "terraform-backend"
     Terraform   = "true"
