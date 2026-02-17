@@ -14,12 +14,12 @@ resource "aws_ssm_parameter" "region" {
   overwrite = true
 }
 
-resource "aws_ssm_parameter" "env" {
-  type  = "String"
-  name  = "/${var.project_name}/env/${var.env}"
-  value = var.env
-  overwrite = true
-}
+#resource "aws_ssm_parameter" "env" {
+#  type  = "String"
+#  name  = "/${var.project_name}/env/${var.env}"
+#  value = var.env
+#  overwrite = true
+#}
 
 resource "aws_ssm_parameter" "tfstate_bucket" {
   type  = "String"
