@@ -1,17 +1,17 @@
-resource "random_string" "suffix" {
-  length  = 6
-  upper   = false
-  special = false
-}
+#resource "random_string" "suffix" {
+#  length  = 6
+#  upper   = false
+#  special = false
+#}
 
-resource "aws_s3_bucket" "tfstate_bucket" {
+resource "aws_s3_bucket" "bucket" {
   # bucket = "${var.s3_bucket_name}-${random_string.suffix.result}"
   bucket = var.s3_bucket_name
   lifecycle {
     prevent_destroy = false
   }
   tags = {
-    Name        = "tfstate-${var.project_name}-${var.env}-${var.region}"
+    Name        = var.s3_bucket_name
     Environment = var.env
     Project     = "remote-backend"
     Purpose     = "terraform-backend"
@@ -19,15 +19,15 @@ resource "aws_s3_bucket" "tfstate_bucket" {
   }
 }
 
-resource "aws_s3_bucket_versioning" "tfstate_versioning" {
-  bucket = aws_s3_bucket.tfstate_bucket.id
+resource "aws_s3_bucket_versioning" "bucket_versioning" {
+  bucket = aws_s3_bucket.bucket.id
   versioning_configuration {
     status = "Enabled"
   }
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "tfstate_encryption" {
-  bucket = aws_s3_bucket.tfstate_bucket.id
+  bucket = aws_s3_bucket.bucket.id
   rule {
     apply_server_side_encryption_by_default {
       sse_algorithm = "AES256"
@@ -35,8 +35,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "tfstate_encryptio
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "tfstate_block_public" {
-  bucket = aws_s3_bucket.tfstate_bucket.id
+resource "aws_s3_bucket_public_access_block" "bucket_block_public" {
+  bucket = aws_s3_bucket.bucket.id
   block_public_acls       = true
   block_public_policy     = true
   ignore_public_acls      = true
