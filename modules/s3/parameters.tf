@@ -23,7 +23,7 @@ resource "aws_ssm_parameter" "env" {
 
 resource "aws_ssm_parameter" "tfstate_bucket" {
   type  = "String"
-  name  = "/tfstate_bucket/${var.project_name}/${var.region}"
+  name  = "/tfstate_bucket/${var.s3_bucket_name}"
   value = aws_s3_bucket.tfstate_bucket.id
   overwrite = true
 }
