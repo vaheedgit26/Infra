@@ -47,6 +47,4 @@ resource "aws_eip" "nat_instance_eip" {
   domain   = "vpc"
   instance = aws_instance.ec2_instance.id
   network_interface = aws_instance.ec2_instance.primary_network_interface_id
-
-  depends_on = [aws_instance.ec2_instance]
 }
