@@ -3,7 +3,10 @@ variable "vpc_id" {}
 variable "public_subnet_cidr" { type = list(any) }
 variable "private_subnet_cidr" { type = list }
 # variable "private_subnet_ids" { type = list }
-  
+
+variable private_route_table_id { type = string }
+variable database_route_table_id { type = string }
+variable nat_primary_network_interface_id { type = string }
 ############### Common variables for all Modules ############################
 variable "project_name" {}
 variable "env" {}
