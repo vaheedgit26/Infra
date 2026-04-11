@@ -31,5 +31,6 @@ variable "ami_id" {}
 variable "public_key_name" {}
 variable "public_subnet_ID_to_launch_nat_instance" {}
 
+variable "root_volume_size" {}
 variable "is_nat_instance" { default = true }
 variable "is_eip_required" { default = false }
