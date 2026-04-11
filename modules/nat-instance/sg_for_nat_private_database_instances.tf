@@ -1,6 +1,6 @@
 # Security group for NAT Instance
 module "nat_sg" {
-    source = "git::https://github.com/vaheedgit26/Infra.git//modules/security_group"
+    source = "git::https://github.com/vaheedgit26/Infra.git//modules/sg"
     project_name = var.project_name
     env = var.env
     vpc_id = var.vpc_id
@@ -11,7 +11,7 @@ module "nat_sg" {
 
 # Security group for Private Subnet Instances
 module "private_sg" {
-    source = "git::https://github.com/vaheedgit26/Infra.git//modules/security_group"
+    source = "git::https://github.com/vaheedgit26/Infra.git//modules/sg"
     project_name = var.project_name
     env = var.env
     vpc_id = var.vpc_id
@@ -22,7 +22,7 @@ module "private_sg" {
 
 # Security group for Database Subnet Instances
 module "database_sg" {
-    source = "git::https://github.com/vaheedgit26/Infra.git//modules/security_group"
+    source = "git::https://github.com/vaheedgit26/Infra.git//modules/sg"
     project_name = var.project_name
     env = var.env
     vpc_id = var.vpc_id
