@@ -32,3 +32,4 @@ variable "public_key_name" {}
 variable "public_subnet_ID_to_launch_nat_instance" {}
 
 variable "is_nat_instance" { default = false }
+variable "is_eip_required" { default = false }
