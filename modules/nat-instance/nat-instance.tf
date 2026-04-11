@@ -1,5 +1,5 @@
 module "ec2" {
-  source = "git::https://github.com/vaheedgithubac/Infra.git//modules/ec2"
+  source = "git::https://github.com/vaheedgit26/Infra.git//modules/ec2"
 
   ami_id                      = var.ami_id
   public_key_name             = var.public_key_name
