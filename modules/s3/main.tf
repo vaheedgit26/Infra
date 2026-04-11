@@ -16,7 +16,7 @@ resource "aws_s3_bucket" "bucket" {
   tags = {
     Name        = var.s3_bucket_name
     Environment = var.env
-    Project     = "remote-backend"
+    Project     = var.project_name
     Purpose     = "terraform-backend"
     Terraform   = "true"
   }
