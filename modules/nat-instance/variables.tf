@@ -32,5 +32,6 @@ variable "public_key_name" {}
 variable "public_subnet_ID_to_launch_nat_instance" {}
 
 variable "root_volume_size" {}
+variable "instance_type" {}
 variable "is_nat_instance" { default = true }
 variable "is_eip_required" { default = false }
