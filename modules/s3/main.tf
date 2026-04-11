@@ -22,12 +22,13 @@ resource "aws_s3_bucket" "bucket" {
   }
 }
 
-resource "aws_s3_bucket_versioning" "bucket_versioning" {
-  bucket = aws_s3_bucket.bucket.id
-  versioning_configuration {
-    status = "Enabled"
-  }
-}
+# This will incur some cost
+#resource "aws_s3_bucket_versioning" "bucket_versioning" {
+#  bucket = aws_s3_bucket.bucket.id
+#  versioning_configuration {
+#    status = "Enabled"
+#  }
+#}
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "bucket_encryption" {
   bucket = aws_s3_bucket.bucket.id
