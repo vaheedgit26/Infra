@@ -8,6 +8,7 @@ module "ec2" {
   associate_public_ip_address = true
   is_nat_instance             = var.is_nat_instance  # creates NAT instance if true
   is_eip_required             = var.is_eip_required
+  root_volume_size            = var.root_volume_size
   # user_data                 = file("${path.module}/nat_user_data.sh")
 
   project_name                = var.project_name
