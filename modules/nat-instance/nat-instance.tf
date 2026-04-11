@@ -3,7 +3,7 @@ module "ec2" {
 
   ami_id                      = var.ami_id
   public_key_name             = var.public_key_name
-  sg_id                       = [module.nat_sg.sg_id]
+  sg_ids                      = [module.nat_sg.sg_id]
   subnet_id                   = var.public_subnet_ID_to_launch_nat_instance  # "subnet-088e8443a70102e2a" #1a
   associate_public_ip_address = true
   is_nat_instance             = var.is_nat_instance  # creates NAT instance if true
