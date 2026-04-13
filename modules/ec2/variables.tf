@@ -3,7 +3,7 @@
 ################################################################
 variable "ami_id" {}
 variable "public_key_name" {}
-variable "sg_ids" {}
+variable "sg_ids" { type = list(string) }
 variable "subnet_id" {}
 
 variable "project_name" {}
