@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 echo " start of the nat_user_data.sh script"
 ###########################################
 sudo yum install iptables-services -y
