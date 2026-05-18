@@ -9,7 +9,7 @@ output "public_subnet_cidr"   { value = var.public_subnet_cidr }
 output "private_subnet_cidr"  { value = var.private_subnet_cidr }
 output "database_subnet_cidr" { value = var.database_subnet_cidr }
 
-output "public_subnet_ids"   { value = aws_subnet.public[*].id  }
+output "public_subnet_ids"   { value = aws_subnet.public[*].id }
 output "private_subnet_ids"  { value = aws_subnet.private.*.id }
 output "database_subnet_ids" { value = aws_subnet.database.*.id }
 
